@@ -6,16 +6,16 @@ import sys
 pygame.init()
 
 
-width = 300
-rows = 3
-win = pygame.display.set_mode((width, width))
+WIDTH = 300
+ROWS = 3
+win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("TicTacToe")
 
-white = (255, 255, 255)
-black = (0, 0, 0)
-gray = (200, 200, 200)
-red = (255, 0, 0)
-blue = (255,0, 0, 255)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GRAY = (200, 200, 200)
+RED = (255, 0, 0)
+BLUE = (255,0, 0, 255)
 
 pygame.display.set_caption("ticTacToe")
 
@@ -29,21 +29,21 @@ end_font = pygame.font.SysFont('arial', 40)
 
 
 def draw_grid():
-    gap = width // rows
+    gap = WIDTH // ROWS
 
     
     x = 0
     y = 0
 
-    for i in range(rows):
+    for i in range(ROWS):
         x = i * gap
 
-        pygame.draw.line(win, gray, (x, 0), (x, width), 3)
-        pygame.draw.line(win, gray, (0, x), (width, x), 3)
+        pygame.draw.line(win, GRAY, (x, 0), (x, WIDTH), 3)
+        pygame.draw.line(win, GRAY, (0, x), (WIDTH, x), 3)
 
 
 def initialize_grid():
-    dis_to_cen = width // rows // 2
+    dis_to_cen = WIDTH // ROWS // 2
 
     
     game_array = [[None, None, None], [None, None, None], [None, None, None]]
@@ -73,7 +73,7 @@ def click(game_array):
             dis = math.sqrt((x - m_x) ** 2 + (y - m_y) ** 2)
 
             
-            if dis < width // rows // 2 and can_play:
+            if dis < WIDTH // ROWS // 2 and can_play:
                 if x_turn:  # If it's X's turn
                     images.append((x, y, x_image))
                     x_turn = False
@@ -126,16 +126,16 @@ def has_drawn(game_array):
 
 def display_message(content):
     pygame.time.delay(500)
-    win.fill(white)
-    end_text = end_font.render(content, 1, black)
-    win.blit(end_text, ((width - end_text.get_width()) //
-             2, (width - end_text.get_height()) // 2))
+    win.fill(WHITE)
+    end_text = end_font.render(content, 1, BLACK)
+    win.blit(end_text, ((WIDTH - end_text.get_width()) //
+             2, (WIDTH - end_text.get_height()) // 2))
     pygame.display.update()
     pygame.time.delay(3000)
 
 
 def render():
-    win.fill(white)
+    win.fill(WHITE)
     draw_grid()
 
    
